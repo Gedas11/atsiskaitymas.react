@@ -3,7 +3,7 @@ import Foods from '../foods/Foods'
 import React, { useEffect, useState } from "react";
 
 const Search = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState('');
   const [food, setFood] = useState([]);
   const handleChange = (e) => {
     setSearchInput(e.target.value);
@@ -15,12 +15,14 @@ const Search = () => {
       .catch((err) => console.log(err))
       
   },[searchInput])
-
+  const submitHandler = (event) => {
+  event.preventDefault();
+  }
 
   return (
 
     <div className="container">
-      <form action="" class="search-bar">
+      <form action="" class="search-bar" onSubmit={submitHandler}>
         <input
           type="search"
           onChange={(e) => handleChange(e)}
