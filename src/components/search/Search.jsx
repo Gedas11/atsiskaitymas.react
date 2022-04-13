@@ -28,7 +28,8 @@ const Search = () => {
           pattern=".*\S.*"
           required
         />
-        <button class="search-btn" type="submit">
+        <button class="search-btn" type="submit" onClick={setFood}>
+            
           <span>Search</span>
         </button>
       </form>
