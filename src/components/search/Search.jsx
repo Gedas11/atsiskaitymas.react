@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const Search = () => {
   const [searchInput, setSearchInput] = useState('');
   const [food, setFood] = useState([]);
+  const [selected, setSelected] = useState('')
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -14,15 +15,17 @@ const Search = () => {
       .then((results) => setFood(results.meals) )
       .catch((err) => console.log(err))
       
-  },[searchInput])
+  },[selected])
   const submitHandler = (event) => {
   event.preventDefault();
+  setSelected(searchInput)
   }
+  
 
   return (
 
     <div className="container">
-      <form action="" class="search-bar" onSubmit={submitHandler}>
+      <form action="" class="search-bar" onSubmit={(event)=>submitHandler(event)}>
         <input
           type="search"
           onChange={(e) => handleChange(e)}
@@ -35,7 +38,7 @@ const Search = () => {
           <span>Search</span>
         </button>
       </form>
-      <Foods food={food}/>
+     {selected && <Foods food={food}/>} 
     </div>
   );
 };
