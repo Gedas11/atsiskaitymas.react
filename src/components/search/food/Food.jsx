@@ -2,7 +2,7 @@ import './food.scss'
 
 import React, {useState} from 'react'
 
-const Food = ({photo, title, category}) => {
+const Food = ({photo, title, category, ingrained}) => {
   
   return (
       <div className="food">
